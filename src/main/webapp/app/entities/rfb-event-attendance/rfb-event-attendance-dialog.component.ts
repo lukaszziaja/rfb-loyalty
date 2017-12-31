@@ -86,7 +86,7 @@ export class RfbEventAttendanceDialogComponent implements OnInit {
         return item.id;
     }
 
-    trackRfbUserById(index: number, item: User) {
+    trackUserById(index: number, item: User) {
         return item.id;
     }
 }

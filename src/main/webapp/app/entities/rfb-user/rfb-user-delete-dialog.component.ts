@@ -4,20 +4,20 @@ import { ActivatedRoute } from '@angular/router';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager } from 'ng-jhipster';
 
-import { RfbUser } from './rfb-user.model';
-import { RfbUserPopupService } from './rfb-user-popup.service';
-import { RfbUserService } from './rfb-user.service';
+import { User } from './rfb-user.model';
+import { UserPopupService } from './rfb-user-popup.service';
+import { UserService } from './rfb-user.service';
 
 @Component({
     selector: 'jhi-rfb-user-delete-dialog',
     templateUrl: './rfb-user-delete-dialog.component.html'
 })
-export class RfbUserDeleteDialogComponent {
+export class UserDeleteDialogComponent {
 
-    rfbUser: RfbUser;
+    rfbUser: User;
 
     constructor(
-        private rfbUserService: RfbUserService,
+        private rfbUserService: UserService,
         public activeModal: NgbActiveModal,
         private eventManager: JhiEventManager
     ) {
@@ -42,19 +42,19 @@ export class RfbUserDeleteDialogComponent {
     selector: 'jhi-rfb-user-delete-popup',
     template: ''
 })
-export class RfbUserDeletePopupComponent implements OnInit, OnDestroy {
+export class UserDeletePopupComponent implements OnInit, OnDestroy {
 
     routeSub: any;
 
     constructor(
         private route: ActivatedRoute,
-        private rfbUserPopupService: RfbUserPopupService
+        private rfbUserPopupService: UserPopupService
     ) {}
 
     ngOnInit() {
         this.routeSub = this.route.params.subscribe((params) => {
             this.rfbUserPopupService
-                .open(RfbUserDeleteDialogComponent as Component, params['id']);
+                .open(UserDeleteDialogComponent as Component, params['id']);
         });
     }
 

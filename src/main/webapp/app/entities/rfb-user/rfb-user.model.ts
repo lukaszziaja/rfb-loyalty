@@ -1,6 +1,6 @@
 import { BaseEntity } from './../../shared';
 
-export class RfbUser implements BaseEntity {
+export class User implements BaseEntity {
     constructor(
         public id?: number,
         public username?: string,

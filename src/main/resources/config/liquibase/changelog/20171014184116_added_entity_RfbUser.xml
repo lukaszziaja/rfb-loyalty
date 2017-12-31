@@ -13,7 +13,7 @@
     <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
 
     <!--
-        Added the entity RfbUser.
+        Added the entity User.
     -->
     <changeSet id="20171014184116-1" author="jhipster">
         <createTable tableName="rfb_user">

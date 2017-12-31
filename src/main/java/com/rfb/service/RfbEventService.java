@@ -1,8 +1,12 @@
 package com.rfb.service;
 
+import com.rfb.domain.RfbEvent;
 import com.rfb.service.dto.RfbEventDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+
+import java.time.LocalDate;
+import java.util.List;
 
 /**
  * Service Interface for managing RfbEvent.
@@ -18,25 +22,27 @@ public interface RfbEventService {
     RfbEventDTO save(RfbEventDTO rfbEventDTO);
 
     /**
-     * Get all the rfbEvents.
+     *  Get all the rfbEvents.
      *
-     * @param pageable the pagination information
-     * @return the list of entities
+     *  @param pageable the pagination information
+     *  @return the list of entities
      */
     Page<RfbEventDTO> findAll(Pageable pageable);
 
     /**
-     * Get the "id" rfbEvent.
+     *  Get the "id" rfbEvent.
      *
-     * @param id the id of the entity
-     * @return the entity
+     *  @param id the id of the entity
+     *  @return the entity
      */
     RfbEventDTO findOne(Long id);
 
     /**
-     * Delete the "id" rfbEvent.
+     *  Delete the "id" rfbEvent.
      *
-     * @param id the id of the entity
+     *  @param id the id of the entity
      */
     void delete(Long id);
+
+    RfbEventDTO findByTodayAndLocation(Long locationID);
 }

@@ -2,21 +2,21 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/Rx';
 import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 
-import { RfbUser } from './rfb-user.model';
-import { RfbUserService } from './rfb-user.service';
+import { User } from './rfb-user.model';
+import { UserService } from './rfb-user.service';
 import { Principal, ResponseWrapper } from '../../shared';
 
 @Component({
     selector: 'jhi-rfb-user',
     templateUrl: './rfb-user.component.html'
 })
-export class RfbUserComponent implements OnInit, OnDestroy {
-rfbUsers: RfbUser[];
+export class UserComponent implements OnInit, OnDestroy {
+rfbUsers: User[];
     currentAccount: any;
     eventSubscriber: Subscription;
 
     constructor(
-        private rfbUserService: RfbUserService,
+        private rfbUserService: UserService,
         private jhiAlertService: JhiAlertService,
         private eventManager: JhiEventManager,
         private principal: Principal
@@ -36,17 +36,17 @@ rfbUsers: RfbUser[];
         this.principal.identity().then((account) => {
             this.currentAccount = account;
         });
-        this.registerChangeInRfbUsers();
+        this.registerChangeInUsers();
     }
 
     ngOnDestroy() {
         this.eventManager.destroy(this.eventSubscriber);
     }
 
-    trackId(index: number, item: RfbUser) {
+    trackId(index: number, item: User) {
         return item.id;
     }
-    registerChangeInRfbUsers() {
+    registerChangeInUsers() {
         this.eventSubscriber = this.eventManager.subscribe('rfbUserListModification', (response) => this.loadAll());
     }
 

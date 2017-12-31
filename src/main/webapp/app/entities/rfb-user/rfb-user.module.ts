@@ -3,14 +3,14 @@ import { RouterModule } from '@angular/router';
 
 import { RfbloyaltySharedModule } from '../../shared';
 import {
-    RfbUserService,
-    RfbUserPopupService,
-    RfbUserComponent,
-    RfbUserDetailComponent,
-    RfbUserDialogComponent,
-    RfbUserPopupComponent,
-    RfbUserDeletePopupComponent,
-    RfbUserDeleteDialogComponent,
+    UserService,
+    UserPopupService,
+    UserComponent,
+    UserDetailComponent,
+    UserDialogComponent,
+    UserPopupComponent,
+    UserDeletePopupComponent,
+    UserDeleteDialogComponent,
     rfbUserRoute,
     rfbUserPopupRoute,
 } from './';
@@ -26,24 +26,24 @@ const ENTITY_STATES = [
         RouterModule.forChild(ENTITY_STATES)
     ],
     declarations: [
-        RfbUserComponent,
-        RfbUserDetailComponent,
-        RfbUserDialogComponent,
-        RfbUserDeleteDialogComponent,
-        RfbUserPopupComponent,
-        RfbUserDeletePopupComponent,
+        UserComponent,
+        UserDetailComponent,
+        UserDialogComponent,
+        UserDeleteDialogComponent,
+        UserPopupComponent,
+        UserDeletePopupComponent,
     ],
     entryComponents: [
-        RfbUserComponent,
-        RfbUserDialogComponent,
-        RfbUserPopupComponent,
-        RfbUserDeleteDialogComponent,
-        RfbUserDeletePopupComponent,
+        UserComponent,
+        UserDialogComponent,
+        UserPopupComponent,
+        UserDeleteDialogComponent,
+        UserDeletePopupComponent,
     ],
     providers: [
-        RfbUserService,
-        RfbUserPopupService,
+        UserService,
+        UserPopupService,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class RfbloyaltyRfbUserModule {}
+export class RfbloyaltyUserModule {}

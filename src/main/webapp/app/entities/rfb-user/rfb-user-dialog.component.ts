@@ -6,9 +6,9 @@ import { Observable } from 'rxjs/Rx';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 
-import { RfbUser } from './rfb-user.model';
-import { RfbUserPopupService } from './rfb-user-popup.service';
-import { RfbUserService } from './rfb-user.service';
+import { User } from './rfb-user.model';
+import { UserPopupService } from './rfb-user-popup.service';
+import { UserService } from './rfb-user.service';
 import { RfbLocation, RfbLocationService } from '../rfb-location';
 import { ResponseWrapper } from '../../shared';
 
@@ -16,9 +16,9 @@ import { ResponseWrapper } from '../../shared';
     selector: 'jhi-rfb-user-dialog',
     templateUrl: './rfb-user-dialog.component.html'
 })
-export class RfbUserDialogComponent implements OnInit {
+export class UserDialogComponent implements OnInit {
 
-    rfbUser: RfbUser;
+    rfbUser: User;
     isSaving: boolean;
 
     homelocations: RfbLocation[];
@@ -26,7 +26,7 @@ export class RfbUserDialogComponent implements OnInit {
     constructor(
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
-        private rfbUserService: RfbUserService,
+        private rfbUserService: UserService,
         private rfbLocationService: RfbLocationService,
         private eventManager: JhiEventManager
     ) {
@@ -35,7 +35,7 @@ export class RfbUserDialogComponent implements OnInit {
     ngOnInit() {
         this.isSaving = false;
         this.rfbLocationService
-            .query({filter: 'rfbuser-is-null'})
+            .query({filter: 'buser-is-null'})
             .subscribe((res: ResponseWrapper) => {
                 if (!this.rfbUser.homeLocationId) {
                     this.homelocations = res.json;
@@ -64,12 +64,12 @@ export class RfbUserDialogComponent implements OnInit {
         }
     }
 
-    private subscribeToSaveResponse(result: Observable<RfbUser>) {
-        result.subscribe((res: RfbUser) =>
+    private subscribeToSaveResponse(result: Observable<User>) {
+        result.subscribe((res: User) =>
             this.onSaveSuccess(res), (res: Response) => this.onSaveError());
     }
 
-    private onSaveSuccess(result: RfbUser) {
+    private onSaveSuccess(result: User) {
         this.eventManager.broadcast({ name: 'rfbUserListModification', content: 'OK'});
         this.isSaving = false;
         this.activeModal.dismiss(result);
@@ -92,23 +92,23 @@ export class RfbUserDialogComponent implements OnInit {
     selector: 'jhi-rfb-user-popup',
     template: ''
 })
-export class RfbUserPopupComponent implements OnInit, OnDestroy {
+export class UserPopupComponent implements OnInit, OnDestroy {
 
     routeSub: any;
 
     constructor(
         private route: ActivatedRoute,
-        private rfbUserPopupService: RfbUserPopupService
+        private rfbUserPopupService: UserPopupService
     ) {}
 
     ngOnInit() {
         this.routeSub = this.route.params.subscribe((params) => {
             if ( params['id'] ) {
                 this.rfbUserPopupService
-                    .open(RfbUserDialogComponent as Component, params['id']);
+                    .open(UserDialogComponent as Component, params['id']);
             } else {
                 this.rfbUserPopupService
-                    .open(RfbUserDialogComponent as Component);
+                    .open(UserDialogComponent as Component);
             }
         });
     }

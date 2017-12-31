@@ -1,26 +1,26 @@
 import { Routes } from '@angular/router';
 
 import { UserRouteAccessService } from '../../shared';
-import { RfbUserComponent } from './rfb-user.component';
-import { RfbUserDetailComponent } from './rfb-user-detail.component';
-import { RfbUserPopupComponent } from './rfb-user-dialog.component';
-import { RfbUserDeletePopupComponent } from './rfb-user-delete-dialog.component';
+import { UserComponent } from './rfb-user.component';
+import { UserDetailComponent } from './rfb-user-detail.component';
+import { UserPopupComponent } from './rfb-user-dialog.component';
+import { UserDeletePopupComponent } from './rfb-user-delete-dialog.component';
 
 export const rfbUserRoute: Routes = [
     {
         path: 'rfb-user',
-        component: RfbUserComponent,
+        component: UserComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'RfbUsers'
+            pageTitle: 'Users'
         },
         canActivate: [UserRouteAccessService]
     }, {
         path: 'rfb-user/:id',
-        component: RfbUserDetailComponent,
+        component: UserDetailComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'RfbUsers'
+            pageTitle: 'Users'
         },
         canActivate: [UserRouteAccessService]
     }
@@ -29,30 +29,30 @@ export const rfbUserRoute: Routes = [
 export const rfbUserPopupRoute: Routes = [
     {
         path: 'rfb-user-new',
-        component: RfbUserPopupComponent,
+        component: UserPopupComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'RfbUsers'
+            pageTitle: 'Users'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'
     },
     {
         path: 'rfb-user/:id/edit',
-        component: RfbUserPopupComponent,
+        component: UserPopupComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'RfbUsers'
+            pageTitle: 'Users'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'
     },
     {
         path: 'rfb-user/:id/delete',
-        component: RfbUserDeletePopupComponent,
+        component: UserDeletePopupComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'RfbUsers'
+            pageTitle: 'Users'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'

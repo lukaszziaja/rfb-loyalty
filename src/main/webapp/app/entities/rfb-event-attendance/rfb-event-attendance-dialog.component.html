@@ -34,7 +34,7 @@
             <label class="form-control-label" for="field_user">User</label>
             <select class="form-control" id="field_user" name="user" [(ngModel)]="rfbEventAttendance.userDTO.id" >
                 <option [ngValue]="null"></option>
-                <option [ngValue]="user.id" *ngFor="let user of users; trackBy: trackRfbUserById">{{user.login}}</option>
+                <option [ngValue]="user.id" *ngFor="let user of users; trackBy: trackUserById">{{user.login}}</option>
             </select>
         </div>
     </div>

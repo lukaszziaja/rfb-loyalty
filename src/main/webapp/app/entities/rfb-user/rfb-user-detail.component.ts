@@ -3,22 +3,22 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
 import { JhiEventManager } from 'ng-jhipster';
 
-import { RfbUser } from './rfb-user.model';
-import { RfbUserService } from './rfb-user.service';
+import { User } from './rfb-user.model';
+import { UserService } from './rfb-user.service';
 
 @Component({
     selector: 'jhi-rfb-user-detail',
     templateUrl: './rfb-user-detail.component.html'
 })
-export class RfbUserDetailComponent implements OnInit, OnDestroy {
+export class UserDetailComponent implements OnInit, OnDestroy {
 
-    rfbUser: RfbUser;
+    rfbUser: User;
     private subscription: Subscription;
     private eventSubscriber: Subscription;
 
     constructor(
         private eventManager: JhiEventManager,
-        private rfbUserService: RfbUserService,
+        private rfbUserService: UserService,
         private route: ActivatedRoute
     ) {
     }
@@ -27,7 +27,7 @@ export class RfbUserDetailComponent implements OnInit, OnDestroy {
         this.subscription = this.route.params.subscribe((params) => {
             this.load(params['id']);
         });
-        this.registerChangeInRfbUsers();
+        this.registerChangeInUsers();
     }
 
     load(id) {
@@ -44,7 +44,7 @@ export class RfbUserDetailComponent implements OnInit, OnDestroy {
         this.eventManager.destroy(this.eventSubscriber);
     }
 
-    registerChangeInRfbUsers() {
+    registerChangeInUsers() {
         this.eventSubscriber = this.eventManager.subscribe(
             'rfbUserListModification',
             (response) => this.load(this.rfbUser.id)

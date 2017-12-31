@@ -1,17 +1,17 @@
 import { Injectable, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { RfbUser } from './rfb-user.model';
-import { RfbUserService } from './rfb-user.service';
+import { User } from './rfb-user.model';
+import { UserService } from './rfb-user.service';
 
 @Injectable()
-export class RfbUserPopupService {
+export class UserPopupService {
     private ngbModalRef: NgbModalRef;
 
     constructor(
         private modalService: NgbModal,
         private router: Router,
-        private rfbUserService: RfbUserService
+        private rfbUserService: UserService
 
     ) {
         this.ngbModalRef = null;
@@ -32,14 +32,14 @@ export class RfbUserPopupService {
             } else {
                 // setTimeout used as a workaround for getting ExpressionChangedAfterItHasBeenCheckedError
                 setTimeout(() => {
-                    this.ngbModalRef = this.rfbUserModalRef(component, new RfbUser());
+                    this.ngbModalRef = this.rfbUserModalRef(component, new User());
                     resolve(this.ngbModalRef);
                 }, 0);
             }
         });
     }
 
-    rfbUserModalRef(component: Component, rfbUser: RfbUser): NgbModalRef {
+    rfbUserModalRef(component: Component, rfbUser: User): NgbModalRef {
         const modalRef = this.modalService.open(component, { size: 'lg', backdrop: 'static'});
         modalRef.componentInstance.rfbUser = rfbUser;
         modalRef.result.then((result) => {

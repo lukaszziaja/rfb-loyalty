@@ -4,10 +4,10 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
     <!--
-        Added the constraints for entity RfbUser.
+        Added the constraints for entity User.
     -->
     <changeSet id="20171014184116-2" author="jhipster">
-        
+
         <addForeignKeyConstraint baseColumnNames="home_location_id"
                                  baseTableName="rfb_user"
                                  constraintName="fk_rfb_user_home_location_id"

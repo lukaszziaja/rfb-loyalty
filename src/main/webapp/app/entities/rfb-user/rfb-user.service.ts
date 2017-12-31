@@ -3,17 +3,17 @@ import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { SERVER_API_URL } from '../../app.constants';
 
-import { RfbUser } from './rfb-user.model';
+import { User } from './rfb-user.model';
 import { ResponseWrapper, createRequestOption } from '../../shared';
 
 @Injectable()
-export class RfbUserService {
+export class UserService {
 
     private resourceUrl = SERVER_API_URL + 'api/rfb-users';
 
     constructor(private http: Http) { }
 
-    create(rfbUser: RfbUser): Observable<RfbUser> {
+    create(rfbUser: User): Observable<User> {
         const copy = this.convert(rfbUser);
         return this.http.post(this.resourceUrl, copy).map((res: Response) => {
             const jsonResponse = res.json();
@@ -21,7 +21,7 @@ export class RfbUserService {
         });
     }
 
-    update(rfbUser: RfbUser): Observable<RfbUser> {
+    update(rfbUser: User): Observable<User> {
         const copy = this.convert(rfbUser);
         return this.http.put(this.resourceUrl, copy).map((res: Response) => {
             const jsonResponse = res.json();
@@ -29,7 +29,7 @@ export class RfbUserService {
         });
     }
 
-    find(id: number): Observable<RfbUser> {
+    find(id: number): Observable<User> {
         return this.http.get(`${this.resourceUrl}/${id}`).map((res: Response) => {
             const jsonResponse = res.json();
             return this.convertItemFromServer(jsonResponse);
@@ -56,18 +56,18 @@ export class RfbUserService {
     }
 
     /**
-     * Convert a returned JSON object to RfbUser.
+     * Convert a returned JSON object to User.
      */
-    private convertItemFromServer(json: any): RfbUser {
-        const entity: RfbUser = Object.assign(new RfbUser(), json);
+    private convertItemFromServer(json: any): User {
+        const entity: User = Object.assign(new User(), json);
         return entity;
     }
 
     /**
-     * Convert a RfbUser to a JSON which can be sent to the server.
+     * Convert a User to a JSON which can be sent to the server.
      */
-    private convert(rfbUser: RfbUser): RfbUser {
-        const copy: RfbUser = Object.assign({}, rfbUser);
+    private convert(rfbUser: User): User {
+        const copy: User = Object.assign({}, rfbUser);
         return copy;
     }
 }

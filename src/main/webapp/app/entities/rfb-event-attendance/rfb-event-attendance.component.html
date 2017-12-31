@@ -1,10 +1,10 @@
 <div>
     <h2>
-        <span>Rfb Event Attendances</span>
+        <span>Event Attendances</span>
         <button class="btn btn-primary float-right jh-create-entity create-rfb-event-attendance" [routerLink]="['/', { outlets: { popup: ['rfb-event-attendance-new'] } }]">
             <span class="fa fa-plus"></span>
             <span >
-            Create new Rfb Event Attendance
+            Create new Event Attendance
             </span>
         </button>
     </h2>
@@ -29,12 +29,12 @@
                 <td>{{rfbEventAttendance.attendanceDate | date:'mediumDate'}}</td>
                 <td>
                     <div *ngIf="rfbEventAttendance.rfbEventDTO">
-                        <a [routerLink]="['../rfb-event', rfbEventAttendance.rfbEventDTO.id]" >{{rfbEventAttendance.rfbEventDTO.rfbLocationDTO.locationName}} : {{ rfbEventAttendance.attendanceDate | date }} </a>
+                        <a [routerLink]="['../rfb-event', rfbEventAttendance.rfbEventDTO.id  ]" >{{rfbEventAttendance.rfbEventDTO.rfbLocationDTO.locationName}} : {{ rfbEventAttendance.attendanceDate | date }} </a>
                     </div>
                 </td>
                 <td>
                     <div *ngIf="rfbEventAttendance">
-                        <a [routerLink]="['../rfb-user', rfbEventAttendance.userDTO.id]" >{{rfbEventAttendance.userDTO.login}}</a>
+                        <a [routerLink]="['../rfb-user', rfbEventAttendance.rfbUserDTO.id  ]" >{{rfbEventAttendance.rfbUserDTO.username}}</a>
                     </div>
                 </td>
                 <td class="text-right">
@@ -48,7 +48,6 @@
                         <button type="submit"
                                 [routerLink]="['/', { outlets: { popup: 'rfb-event-attendance/'+ rfbEventAttendance.id + '/edit'} }]"
                                 replaceUrl="true"
-                                queryParamsHandling="merge"
                                 class="btn btn-primary btn-sm">
                             <span class="fa fa-pencil"></span>
                             <span class="d-none d-md-inline">Edit</span>
@@ -56,7 +55,6 @@
                         <button type="submit"
                                 [routerLink]="['/', { outlets: { popup: 'rfb-event-attendance/'+ rfbEventAttendance.id + '/delete'} }]"
                                 replaceUrl="true"
-                                queryParamsHandling="merge"
                                 class="btn btn-danger btn-sm">
                             <span class="fa fa-remove"></span>
                             <span class="d-none d-md-inline">Delete</span>

@@ -61,7 +61,7 @@ export class HomeComponent implements OnInit {
 
     afterUserAccountSetup(user: Account) {
         this.currentUser = user;
-        this.rfbEventAttendance.rfbUserDTO = user;
+        this.rfbEventAttendance.userDTO = user;
         // we can set todays event for anyone who has a homeLocation. If they don't we should setTodays event
         // when they change the location drop down || or just grab the event and then compare their event code to the events
         if (this.currentUser.authorities.indexOf('ROLE_ORGANIZER') !== -1) {

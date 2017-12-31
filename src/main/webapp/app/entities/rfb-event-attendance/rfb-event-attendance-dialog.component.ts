@@ -44,7 +44,7 @@ export class RfbEventAttendanceDialogComponent implements OnInit {
             .subscribe((res: ResponseWrapper) => { this.users = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
         if (typeof this.rfbEventAttendance.rfbEventDTO === 'undefined') {
             this.rfbEventAttendance.rfbEventDTO = new RfbEvent();
-            this.rfbEventAttendance.rfbUserDTO = new User();
+            this.rfbEventAttendance.userDTO = new User();
         }
     }
 
@@ -86,7 +86,7 @@ export class RfbEventAttendanceDialogComponent implements OnInit {
         return item.id;
     }
 
-    trackUserById(index: number, item: User) {
+    trackRfbUserById(index: number, item: User) {
         return item.id;
     }
 }
